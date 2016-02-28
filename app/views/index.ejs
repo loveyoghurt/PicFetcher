@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <label>URL</label>
+    <input id="urlInput" type="text">
+    <button id="submit">抓取</button>
+    <script type="text/javascript" src="/javascripts/jquery-2.2.1.js"></script>
+    <script type="text/javascript">
+    	$('#submit').on('click', function(){
+    		$.ajax({
+    			url: '/fetchPics',
+    			data: {
+    				'url': $('#urlInput').val()
+    			},
+    			type: 'POST',
+    			success: function(){
+    				alert('success');
+    			},
+    			error: function(e){
+    				console.log(e);
+    			}
+    		})
+    	})
+    </script>
+  </body>
+</html>
